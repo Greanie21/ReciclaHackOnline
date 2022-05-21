@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { StyleSheet, TextInput } from "react-native";
+import { Button, StyleSheet, TextInput } from "react-native";
 
 import { Text, View } from "../components/Themed";
 import { VViewContainer } from "../components/v-view-container/v-view-container.component";
+import { doLogin } from "../ducks/user";
 
 const styles = StyleSheet.create({
   containerTitle: {
     paddingTop: 84,
     paddingLeft: 24,
-    backgroundColor: "#BFFFB0",
   },
   title: {
     fontFamily: "Source Sans 3",
@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
   containerData: {
     paddingTop: 210,
     paddingLeft: 30,
-    backgroundColor: "#BFFFB0",
   },
   emailInput: {
     height: 40,
@@ -29,26 +28,89 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   forgottenPasswordContainer: {
-    //position: absolute,
-    paddingLeft: 186,
-    backgroundColor: "#BFFFB0",
-    //paddingTop: 73,
+    marginLeft: 210,
   },
   forgottenPassword: {
     fontFamily: "Source Sans 3",
     fontStyle: "normal",
-    //fontWeight: 357,
     fontSize: 13,
     lineHeight: 19,
-    /* identical to box height */
-
     color: "#000000",
+  },
+  loginBox: {
+    borderRadius: 11,
+    width: 300,
+    height: 39,
+    marginTop: 25,
+    marginLeft: 20,
+    backgroundColor: "#28611A",
+  },
+  loginText: {
+    margin: "6.19 7.75",
+    width: 6.44,
+    height: 2.56,
+    color: "#fdfffc",
+    fontFamily: "Source Sans 3, sans-serif",
+    fontSize: 1.5,
+    lineHeight: 1.76,
+    textAlign: "center",
+    textAlignVertical: "center",
+  },
+  orContainer: {
+    flexDirection: "row",
+    marginTop: 20,
+  },
+  line1: {
+    borderWidth: 1,
+    borderColor: "#16340F",
+    flex: 2,
+    height: 0,
+    marginTop: 10,
+  },
+  orTextContainer: {
+    flex: 1,
+    alignItems: "center",
+  },
+  orText: {
+    fontFamily: "Source Sans 3, sans-serif",
+    fontSize: 22,
+    lineHeight: 31,
+    display: "flex",
+    alignItems: "center",
+    textAlign: "center",
+
+    color: "#28611A",
+  },
+  line2: {
+    flex: 2,
+    borderWidth: 1,
+    borderColor: "#16340F",
+    height: 0,
+    marginTop: 10,
+  },
+  containerSocial: {
+    flexDirection: "row",
+  },
+  socialButton: {
+    borderRadius: 11,
+    width: 146,
+    marginTop: 25,
+    marginHorizontal: 30,
+    backgroundColor: "#28611A",
+  },
+  containerCreateAccount: {
+    marginTop: 50,
+    alignItems: "center",
   },
 });
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  function tryDoLogin() {
+    doLogin({ email, password });
+  }
 
   return (
     <VViewContainer>
@@ -71,6 +133,31 @@ export default function LoginScreen() {
         <View style={styles.forgottenPasswordContainer}>
           <Text>Esqueci minha senha</Text>
         </View>
+        <View style={styles.loginBox}>
+          <Button
+            title="Login"
+            color={"white"}
+            onPress={() => tryDoLogin}
+          ></Button>
+        </View>
+      </View>
+      <View style={styles.orContainer}>
+        <View style={styles.line1}></View>
+        <View style={styles.orTextContainer}>
+          <Text style={styles.orText}>ou</Text>
+        </View>
+        <View style={styles.line2}></View>
+      </View>
+      <View style={styles.containerSocial}>
+        <View style={styles.socialButton}>
+          <Button title="Facebook" color={"white"}></Button>
+        </View>
+        <View style={styles.socialButton}>
+          <Button title="Google" color={"white"}></Button>
+        </View>
+      </View>
+      <View style={styles.containerCreateAccount}>
+        <Button title="Não tem login? Crie uma conta" color={"black"}></Button>
       </View>
     </VViewContainer>
   );
