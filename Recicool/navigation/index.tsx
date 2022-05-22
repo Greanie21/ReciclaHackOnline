@@ -61,34 +61,32 @@ function RootNavigator() {
   const dispatch = useDispatch();
 
   const authToken = useSelector((s: any) => s?.user?.token);
+  const isOnLoginPage = useSelector((s: any) => s?.user?.isOnLoginPage);
 
-  if (authToken) {
-    return (
-      <Stack.Navigator>
+  return (
+    <Stack.Navigator>
+      {authToken ? (
         <Stack.Screen
           name="Root"
           component={BottomTabNavigator}
           options={{ headerShown: false }}
         />
-        <Stack.Screen
+      ) : isOnLoginPage ? (
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      ) : (
+        <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+      )}
+
+      {/* <Stack.Screen
           name="NotFound"
           component={NotFoundScreen}
           options={{ title: "Oops!" }}
-        />
-        <Stack.Group screenOptions={{ presentation: "modal" }}>
-          <Stack.Screen name="Modal" component={ModalScreen} />
-        </Stack.Group>
-      </Stack.Navigator>
-    );
-  } else {
-    const isOnLoginPage = useSelector((s: any) => s?.user?.isOnLoginPage);
-    if (isOnLoginPage) {
-      return <LoginScreen />;
-    } else {
-      //return <SignUpScreen />;
-      return <DescarteScreen />;
-    }
-  }
+        /> */}
+      {/* <Stack.Group screenOptions={{ presentation: "modal" }}> */}
+      {/* <Stack.Screen name="Modal" component={ModalScreen} /> */}
+      {/* </Stack.Group> */}
+    </Stack.Navigator>
+  );
 }
 
 /**
@@ -99,6 +97,7 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
+  const isOnDescartePage = useSelector((s: any) => s?.user?.isOnDescartePage);
 
   return (
     <BottomTab.Navigator
@@ -141,14 +140,25 @@ function BottomTabNavigator() {
           ),
         }}
       />
-      <BottomTab.Screen
-        name="TabMenu"
-        component={MenuScreen}
-        options={{
-          title: "Menu",
-          tabBarIcon: ({ color }) => <TabBarIcon name="bars" color={color} />,
-        }}
-      />
+      {isOnDescartePage ? (
+        <BottomTab.Screen
+          name="TabMenu"
+          component={MenuScreen}
+          options={{
+            title: "Menu",
+            tabBarIcon: ({ color }) => <TabBarIcon name="bars" color={color} />,
+          }}
+        />
+      ) : (
+        <BottomTab.Screen
+          name="DescarteScreen"
+          component={DescarteScreen}
+          options={{
+            title: "Menu",
+            tabBarIcon: ({ color }) => <TabBarIcon name="bars" color={color} />,
+          }}
+        />
+      )}
     </BottomTab.Navigator>
   );
 }

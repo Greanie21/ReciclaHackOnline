@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import { ScrollView, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
+import { useDispatch } from "react-redux";
 import { Text, View } from "../components/Themed";
+import { isOnDescartePage } from "../ducks/user";
 
 export default function MenuScreen() {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [openT2, setOpenT2] = useState("");
   const [openT3, setOpenT3] = useState("");
 
   function goToPage(page: string) {
     //todo - função que vai para cada pagina final, ex:PET (garrafas e embalagens)
+
+    dispatch(isOnDescartePage(true));
   }
 
   function renderT3(name: string) {
