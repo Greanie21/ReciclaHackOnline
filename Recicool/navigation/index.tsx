@@ -19,7 +19,7 @@ import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import Home from "../screens/HomeScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import TabTwoScreen from "../screens/PointsScreen";
 import { HttpService } from "../services/http.service";
 import {
   RootStackParamList,
@@ -57,8 +57,8 @@ function RootNavigator() {
   const dispatch = useDispatch();
 
   const authToken = true; //useSelector((s: any) => s?.user?.token);
-  console.log(authToken);
-  console.tron.log("teste", authToken);
+  //console.log(authToken);
+  //console.tron.log("teste", authToken);
 
   if (authToken) {
     return (
