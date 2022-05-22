@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ScrollView, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
-import { List } from "react-native-paper";
 import { Text, View } from "../components/Themed";
 
 export default function MenuScreen() {
@@ -9,7 +8,9 @@ export default function MenuScreen() {
   const [openT2, setOpenT2] = useState("");
   const [openT3, setOpenT3] = useState("");
 
-  function goToPage(page: string) {}
+  function goToPage(page: string) {
+    //todo - função que vai para cada pagina final, ex:PET (garrafas e embalagens)
+  }
 
   function renderT3(name: string) {
     return (
@@ -164,9 +165,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  accordionContainerT1: {
-    //backgroundColor: "red",
-  },
+  accordionContainerT1: {},
   containerTextT1: {
     borderWidth: 3,
   },
@@ -175,7 +174,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   accordionContainerT2: {
-    //backgroundColor: "blue",
     marginLeft: 10,
   },
   containerTextT2: {
@@ -186,7 +184,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   accordionContainerT3: {
-    //backgroundColor: "green",
     marginLeft: 20,
   },
   containerTextT3: {
