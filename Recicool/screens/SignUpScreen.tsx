@@ -8,19 +8,6 @@ export default function SignUpScreen() {
   return (
     <VViewContainer>
       <View style={cadastroStyles.cadastro}>
-        <View style={cadastroStyles.Rectangle1} />
-        <View style={cadastroStyles.grid}>
-          <View style={cadastroStyles.grid} />
-          <View style={cadastroStyles.grid} />
-          <View style={cadastroStyles.grid} />
-          <View style={cadastroStyles.grid} />
-          <View style={cadastroStyles.grid} />
-          <View style={cadastroStyles.grid} />
-          <View style={cadastroStyles.grid} />
-          <View style={cadastroStyles.grid} />
-          <View style={cadastroStyles.grid} />
-          <View style={cadastroStyles.grid} />
-        </View>
         <Text style={cadastroStyles.JtemcadastroLogin}>
           Já tem cadastro? Login
         </Text>
@@ -51,71 +38,6 @@ const cadastroStyles = StyleSheet.create({
     width: 22.5,
     height: 40,
     backgroundColor: "#bfffb0",
-  },
-  grid: {
-    display: "none",
-    width: 22.5,
-    height: 42.38,
-  },
-  grid: {
-    margin: "0.63 0",
-    width: 0.63,
-    height: 41.75,
-    backgroundColor: "rgba(236, 158, 158, 0.5)",
-  },
-  grid: {
-    margin: "21.25 0",
-    width: 0.63,
-    height: 41.75,
-    backgroundColor: "rgba(236, 158, 158, 0.5)",
-  },
-  grid: {
-    margin: "10.94 0",
-    width: 0.63,
-    height: 41.75,
-    backgroundColor: "rgba(236, 158, 158, 0.5)",
-  },
-  grid: {
-    margin: "5.81 0",
-    width: 0.63,
-    height: 41.75,
-    backgroundColor: "rgba(236, 158, 158, 0.5)",
-  },
-  grid: {
-    margin: "16.13 0.63",
-    width: 0.63,
-    height: 41.75,
-    backgroundColor: "rgba(236, 158, 158, 0.5)",
-  },
-  grid: {
-    margin: "22.5 0.63",
-    width: 0.63,
-    height: 22.5,
-    backgroundColor: "rgba(236, 158, 158, 0.5)",
-  },
-  grid: {
-    margin: "22.5 38.75",
-    width: 0.63,
-    height: 22.5,
-    backgroundColor: "rgba(236, 158, 158, 0.5)",
-  },
-  grid: {
-    margin: "22.5 19.69",
-    width: 0.63,
-    height: 22.5,
-    backgroundColor: "rgba(236, 158, 158, 0.5)",
-  },
-  grid: {
-    margin: "22.5 10.13",
-    width: 0.63,
-    height: 22.5,
-    backgroundColor: "rgba(236, 158, 158, 0.5)",
-  },
-  grid: {
-    margin: "22.5 29.25",
-    width: 0.63,
-    height: 22.5,
-    backgroundColor: "rgba(236, 158, 158, 0.5)",
   },
   JtemcadastroLogin: {
     margin: "7.06 33.69",

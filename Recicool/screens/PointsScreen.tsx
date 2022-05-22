@@ -1,13 +1,17 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import EditScreenInfo from "../components/EditScreenInfo";
+import { Text, View } from "../components/Themed";
 
-export default function TabTwoScreen() {
+export default function PointsScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Pontuação</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <View
+        style={styles.separator}
+        lightColor="#eee"
+        darkColor="rgba(255,255,255,0.1)"
+      />
       <View style={styles.pontosContainer}>
         <View style={styles.pontoContainer}>
           <View style={styles.imagemContainer}>
@@ -53,32 +57,32 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 36,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 38,
     marginLeft: 20,
-    color: '#142C6C'
+    color: "#142C6C",
   },
   separator: {
     marginVertical: 30,
     height: 1,
-    width: '80%',
+    width: "80%",
   },
   pontosContainer: {
-    justifyContent: 'space-around',
-    height: '70%',
+    justifyContent: "space-around",
+    height: "70%",
   },
   pontoContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     height: 84,
-    marginRight: 'auto'
+    marginRight: "auto",
   },
   imagemContainer: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   imagem: {
-    backgroundColor: 'red',
+    backgroundColor: "red",
     height: 55,
     width: 60,
     padding: 30,
@@ -86,27 +90,26 @@ const styles = StyleSheet.create({
   textoImagem: {
     fontSize: 20,
     width: 200,
-    textAlign: 'center',
+    textAlign: "center",
   },
   textoSeparator: {
-    fontWeight: '400',
+    fontWeight: "400",
     fontSize: 30,
   },
   moedaContainer: {
-    alignItems: 'center',
-    height: '100%',
-    justifyContent: 'center',
+    alignItems: "center",
+    height: "100%",
+    justifyContent: "center",
     marginLeft: 20,
   },
   moeda: {
-    backgroundColor: 'red',
+    backgroundColor: "red",
     borderRadius: 50,
     width: 60,
     height: 60,
-    marginBottom: 5
+    marginBottom: 5,
   },
   textoMoeda: {
     fontSize: 20,
-    
   },
 });

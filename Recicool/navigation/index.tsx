@@ -19,7 +19,7 @@ import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import Home from "../screens/HomeScreen";
-import TabTwoScreen from "../screens/PointsScreen";
+import PointsScreen from "../screens/PointsScreen";
 import { HttpService } from "../services/http.service";
 import {
   RootStackParamList,
@@ -31,6 +31,7 @@ import LinkingConfiguration from "./LinkingConfiguration";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import LoginScreen from "../screens/LoginScreen";
 import SignUpScreen from "../screens/SignUpScreen";
+import MenuScreen from "../screens/MenuScreen";
 
 export default function Navigation({
   colorScheme,
@@ -56,7 +57,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   const dispatch = useDispatch();
 
-  const authToken = useSelector((s: any) => s?.user?.token);
+  const authToken = true; //useSelector((s: any) => s?.user?.token);
   //console.log(authToken);
   //console.tron.log("teste", authToken);
 
@@ -79,8 +80,8 @@ function RootNavigator() {
       </Stack.Navigator>
     );
   } else {
-    return <LoginScreen />;
-    //return <SignUpScreen />;
+    //return <LoginScreen />;
+    return <SignUpScreen />;
   }
 }
 
@@ -110,7 +111,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabTwo"
-        component={TabTwoScreen}
+        component={PointsScreen}
         options={{
           title: "Pontuação",
           tabBarIcon: ({ color }) => <TabBarIcon name="dollar" color={color} />,
@@ -118,7 +119,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabSearch"
-        component={TabTwoScreen}
+        component={PointsScreen}
         options={{
           title: "Pesquisa",
           tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
@@ -126,7 +127,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabComment"
-        component={TabTwoScreen}
+        component={PointsScreen}
         options={{
           title: "Commentario",
           tabBarIcon: ({ color }) => (
@@ -136,7 +137,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabMenu"
-        component={TabTwoScreen}
+        component={MenuScreen}
         options={{
           title: "Menu",
           tabBarIcon: ({ color }) => <TabBarIcon name="bars" color={color} />,
