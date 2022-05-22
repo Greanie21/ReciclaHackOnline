@@ -3,7 +3,7 @@ import { Button, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 
 import { Text, View } from "../components/Themed";
 import { VViewContainer } from "../components/v-view-container/v-view-container.component";
-import { doLogin } from "../ducks/user";
+import { doLogin, doLoginSuccess } from "../ducks/user";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
@@ -11,6 +11,7 @@ export default function LoginScreen() {
 
   function tryDoLogin() {
     doLogin({ email, password });
+    //doLoginSuccess(true));
   }
 
   return (
@@ -46,7 +47,7 @@ export default function LoginScreen() {
             <TouchableOpacity
               style={styles.loginButton}
               activeOpacity={0.75}
-              onPress={() => tryDoLogin}
+              onPress={() => tryDoLogin()}
             >
               <Text style={styles.loginText}>Login</Text>
             </TouchableOpacity>

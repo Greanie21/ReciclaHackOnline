@@ -1,9 +1,9 @@
 import { put, takeLatest } from "redux-saga/effects";
 import { SHOW_ALERT } from "./alert";
-import { pushVAlert } from "../navigation/navigation.actions";
+//import { pushVAlert } from "../navigation/navigation.actions";
 
 function* _showAlert() {
-  pushVAlert();
+  //pushVAlert();
 }
 
 function* alertSaga() {

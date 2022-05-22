@@ -9,7 +9,7 @@ export default function MenuScreen() {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <List.Section title="Accordions">
+        {/* <List.Section title="Accordions">
           <List.Accordion
             title="Uncontrolled Accordion"
             left={(props) => <List.Icon {...props} icon="folder" />}
@@ -27,7 +27,7 @@ export default function MenuScreen() {
             <List.Item title="First item" />
             <List.Item title="Second item" />
           </List.Accordion>
-        </List.Section>
+        </List.Section> */}
       </ScrollView>
     </View>
   );

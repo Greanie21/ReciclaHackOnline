@@ -19,17 +19,19 @@ import {
 
 function* _doLogin(action) {
   const { email, password } = action.payload;
-  const userService = new UserService();
+
+  //const userService = new UserService();
 
   //const { token, error } = yield userService.doLogin(email, password);
   //
   //if (token) {
-  //  yield put(doLoginSuccess(`Bearer  ${token}`));
+  //yield put(doLoginSuccess(`Bearer  ${token}`));
   //  yield put(getUser());
   //} else {
   //  yield put(doLoginFailed());
   //  Alert.alert("Atenção!", error, [{ text: "Entendi" }]);
   //}
+  yield put(doLoginSuccess(true));
 }
 
 function* _getUser() {
@@ -93,7 +95,7 @@ function* _doLogout() {
 }
 
 function* userSaga() {
-  //yield takeLatest(DO_LOGIN, _doLogin);
+  yield takeLatest(DO_LOGIN, _doLogin);
   //yield takeLatest(DO_LOGOUT, _doLogout);
   //yield takeLatest(GET_USER, _getUser);
   //yield takeLatest(REGISTER, _register);

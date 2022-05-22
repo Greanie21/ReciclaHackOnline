@@ -1,5 +1,5 @@
 import { combineReducers, createStore, applyMiddleware, compose } from "redux";
-import { persistReducer } from "redux-persist";
+import { persistStore, persistReducer } from "redux-persist";
 import createSagaMiddleware from "redux-saga";
 import persistConfig from "./persist.config";
 
@@ -29,4 +29,4 @@ appSaga(sagaMiddleware);
 alertSaga(sagaMiddleware);
 
 export const appStore = store;
-//export const persistor = persistStore(appStore);
+export const persistor = persistStore(appStore);

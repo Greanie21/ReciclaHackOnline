@@ -57,9 +57,13 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   const dispatch = useDispatch();
 
-  const authToken = false; //useSelector((s: any) => s?.user?.token);
+  const authToken = useSelector((s: any) => s?.user?.token);
   //console.log(authToken);
-  //console.tron.log("teste", authToken);
+  console.tron.log("teste", authToken);
+  console.tron.log(
+    "teste2",
+    useSelector((s: any) => s?.user)
+  );
 
   if (authToken) {
     return (
@@ -80,8 +84,8 @@ function RootNavigator() {
       </Stack.Navigator>
     );
   } else {
-    //return <LoginScreen />;
-    return <SignUpScreen />;
+    return <LoginScreen />;
+    //return <SignUpScreen />;
   }
 }
 

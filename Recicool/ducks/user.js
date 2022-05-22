@@ -44,7 +44,7 @@ export const GET_PARTNER_DETAILS_FAILED = "user/GET_PARTNER_DETAILS_FAILED";
 
 // Reducer
 const initialState = {
-  token: "",
+  token: "auie",
   notifications: [],
   leads: [],
   current: {},
@@ -215,9 +215,11 @@ export default function reducer(state = initialState, action = {}) {
 
 // Action Creators
 export function doLoginSuccess(token) {
+  console.tron.log(token);
   return { type: DO_LOGIN_SUCCESS, payload: { token } };
 }
 export function doLogin({ email, password }) {
+  console.tron.log(email);
   return { type: DO_LOGIN, payload: { email, password } };
 }
 export function doLoginFailed() {
