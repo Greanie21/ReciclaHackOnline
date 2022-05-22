@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { Button, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { useDispatch } from "react-redux";
 
 import { Text, View } from "../components/Themed";
 import { VViewContainer } from "../components/v-view-container/v-view-container.component";
-import { doLogin, doLoginSuccess } from "../ducks/user";
+import { doLogin, doLoginSuccess, isNotOnLoginPage } from "../ducks/user";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   function tryDoLogin() {
-    doLogin({ email, password });
-    //doLoginSuccess(true));
+    //doLogin({ email, password });
+    dispatch(doLoginSuccess(true));
+  }
+
+  function createAccount() {
+    dispatch(isNotOnLoginPage());
   }
 
   return (
@@ -76,6 +82,7 @@ export default function LoginScreen() {
           <TouchableOpacity
             style={styles.createAccountButton}
             activeOpacity={0.5}
+            onPress={() => createAccount()}
           >
             <Text style={styles.createAccountText}>
               Não tem login? Crie uma conta
@@ -204,3 +211,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 });
+function dispatch(arg0: { type: string; payload: { token: any } }) {
+  throw new Error("Function not implemented.");
+}

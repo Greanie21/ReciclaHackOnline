@@ -1,12 +1,15 @@
 import React from "react";
 import { Image, ScrollView } from "react-native";
 import { Button, Pressable, StyleSheet, TouchableOpacity } from "react-native";
+import { useDispatch } from "react-redux";
 
 import { Text, View } from "../components/Themed";
+import { doLoginFailed } from "../ducks/user";
 import { jumpToPointScreen } from "../navigation/navigation.actions";
 import { RootTabScreenProps } from "../types";
 
 export default function Home({ navigation }: RootTabScreenProps<"TabOne">) {
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -56,6 +59,10 @@ export default function Home({ navigation }: RootTabScreenProps<"TabOne">) {
             </View>
           </View>
         </View>
+
+        <TouchableOpacity onPress={() => dispatch(doLoginFailed())}>
+          <Text>Sair</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );

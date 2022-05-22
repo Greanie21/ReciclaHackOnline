@@ -1,10 +1,16 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
+import { useDispatch } from "react-redux";
 
 import { Text, View } from "../components/Themed";
 import { VViewContainer } from "../components/v-view-container/v-view-container.component";
+import { isOnLoginPage } from "../ducks/user";
 
 export default function SignUpScreen() {
+  const dispatch = useDispatch();
+  function goBackToLogin() {
+    dispatch(isOnLoginPage());
+  }
   return (
     <VViewContainer>
       <View style={styles.cadastro}>
@@ -25,7 +31,11 @@ export default function SignUpScreen() {
             </TouchableOpacity>
           </View>
         </View>
-        <TouchableOpacity style={styles.cadastroButton} activeOpacity={0.5}>
+        <TouchableOpacity
+          style={styles.cadastroButton}
+          activeOpacity={0.5}
+          onPress={() => goBackToLogin()}
+        >
           <Text style={styles.JtemcadastroLogin}>Já tem cadastro? Login</Text>
         </TouchableOpacity>
       </View>

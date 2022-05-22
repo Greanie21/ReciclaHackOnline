@@ -32,6 +32,9 @@ import { Provider, useSelector, useDispatch } from "react-redux";
 import LoginScreen from "../screens/LoginScreen";
 import SignUpScreen from "../screens/SignUpScreen";
 import MenuScreen from "../screens/MenuScreen";
+import MyCommentsScreen from "../screens/MyCommentsScreen";
+import SearchScreen from "../screens/SearchScreen";
+import DescarteScreen from "../screens/DescarteScreen";
 
 export default function Navigation({
   colorScheme,
@@ -57,12 +60,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   const dispatch = useDispatch();
 
-  const authToken = true; //useSelector((s: any) => s?.user?.token);
-
-  console.tron.log(
-    "teste",
-    useSelector((s: any) => s?.user)
-  );
+  const authToken = useSelector((s: any) => s?.user?.token);
 
   if (authToken) {
     return (
@@ -83,8 +81,13 @@ function RootNavigator() {
       </Stack.Navigator>
     );
   } else {
-    return <LoginScreen />;
-    //return <SignUpScreen />;
+    const isOnLoginPage = useSelector((s: any) => s?.user?.isOnLoginPage);
+    if (isOnLoginPage) {
+      return <LoginScreen />;
+    } else {
+      //return <SignUpScreen />;
+      return <DescarteScreen />;
+    }
   }
 }
 
@@ -122,7 +125,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabSearch"
-        component={PointsScreen}
+        component={SearchScreen}
         options={{
           title: "Pesquisa",
           tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
@@ -130,9 +133,9 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabComment"
-        component={PointsScreen}
+        component={MyCommentsScreen}
         options={{
-          title: "Commentario",
+          title: "Comentário",
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="comment" color={color} />
           ),
