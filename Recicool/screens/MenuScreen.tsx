@@ -47,8 +47,29 @@ export default function MenuScreen() {
       case "Cartonados":
         return (
           <>
-            {renderT4("Cadernos usados")}
-            {renderT4("Caixa de pizza")}
+            {renderT4("Caixas com tampa")}
+            {renderT4("Caixas sem tampa")}
+          </>
+        );
+      case "Vidro":
+        return (
+          <>
+            {renderT4("Garrafas de vidro")}
+            {renderT4("Cacos de vidro")}
+          </>
+        );
+      case "Metal":
+        return (
+          <>
+            {renderT4("Latinhas de bebida")}
+            {renderT4("Enlatados")}
+          </>
+        );
+      case "Outros":
+        return (
+          <>
+            {renderT4("Embalagens de remédio")}
+            {renderT4("Pilhas e baterias")}
           </>
         );
       default:
@@ -72,9 +93,11 @@ export default function MenuScreen() {
     <View style={styles.container}>
       <ScrollView>
         <View>
-          <View style={styles.containerTextT1}>
-            <Text style={styles.fontT1}>Sobre</Text>
-          </View>
+          <TouchableOpacity>
+            <View style={styles.containerTextT1}>
+              <Text style={styles.fontT1}>Sobre</Text>
+            </View>
+          </TouchableOpacity>
           <TouchableOpacity onPress={() => setOpen(!open)}>
             <View>
               <View style={styles.accordionContainerT1}>
@@ -119,6 +142,16 @@ export default function MenuScreen() {
                   </TouchableOpacity>
                 </View>
               ) : null}
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={styles.containerTextT1}>
+              <Text style={styles.fontT1}>Cooperativas</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={styles.containerTextT1}>
+              <Text style={styles.fontT1}>Empresas</Text>
             </View>
           </TouchableOpacity>
         </View>
