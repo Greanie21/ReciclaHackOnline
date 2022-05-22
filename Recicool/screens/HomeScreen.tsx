@@ -3,6 +3,7 @@ import { Image, ScrollView } from "react-native";
 import { Button, Pressable, StyleSheet, TouchableOpacity } from "react-native";
 
 import { Text, View } from "../components/Themed";
+import { jumpToPointScreen } from "../navigation/navigation.actions";
 import { RootTabScreenProps } from "../types";
 
 export default function Home({ navigation }: RootTabScreenProps<"TabOne">) {
@@ -17,7 +18,10 @@ export default function Home({ navigation }: RootTabScreenProps<"TabOne">) {
             <View style={styles.imageContainer}>{/* Imagem */}</View>
             <Text>Perfil</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.upperButtons}>
+          <TouchableOpacity
+            style={styles.upperButtons}
+            onPress={jumpToPointScreen}
+          >
             <View style={styles.imageContainer}>{/* Imagem */}</View>
             <Text>Pontos</Text>
           </TouchableOpacity>
