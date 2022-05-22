@@ -1,46 +1,58 @@
-import { Button, Pressable, StyleSheet } from "react-native";
+import React from "react";
+import { Image, ScrollView } from "react-native";
+import { Button, Pressable, StyleSheet, TouchableOpacity } from "react-native";
 
-import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
 
 export default function Home({ navigation }: RootTabScreenProps<"TabOne">) {
   return (
     <View style={styles.container}>
-      <View style={styles.containerUpperButtons}>
-        <View style={styles.upperButtons}>
-          <View style={styles.imageContainer}>{/* Imagem */}</View>
-          <Button title="Perfil"></Button>
+      <ScrollView>
+        <View style={styles.logoContainer}>
+          <Image source={require("../assets/images/logo.png")} />
         </View>
-        <View style={styles.upperButtons}>
-          <View style={styles.imageContainer}>{/* Imagem */}</View>
-          <Button title="Pontos"></Button>
-        </View>
-        <View style={styles.upperButtons}>
-          <View style={styles.imageContainer}>{/* Imagem */}</View>
-          <Button title="Suas Dicas"></Button>
-        </View>
-      </View>
-      <View style={styles.findContainer}>
-        <Text>Encontre a cooperativa mais próxima:</Text>
-        <View style={styles.findImage}>{/* Imagem */}</View>
-        <Text>Veja todas as cooperativas</Text>
-      </View>
-      <View>
-        <Text>Conheça as empresas cadastradas:</Text>
-
         <View style={styles.containerUpperButtons}>
-          <View style={styles.upperButtons}>
+          <TouchableOpacity style={styles.upperButtons}>
             <View style={styles.imageContainer}>{/* Imagem */}</View>
+            <Text>Perfil</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.upperButtons}>
+            <View style={styles.imageContainer}>{/* Imagem */}</View>
+            <Text>Pontos</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.upperButtons}>
+            <View style={styles.imageContainer}>{/* Imagem */}</View>
+            <Text>Suas Dicas</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.findContainer}>
+          <Text>Encontre a cooperativa mais próxima:</Text>
+
+          <View style={styles.findImageContainer}>
+            <Image
+              style={styles.findImage}
+              source={require("../assets/images/mapa.jpeg")}
+            />
           </View>
-          <View style={styles.upperButtons}>
-            <View style={styles.imageContainer}>{/* Imagem */}</View>
-          </View>
-          <View style={styles.upperButtons}>
-            <View style={styles.imageContainer}>{/* Imagem */}</View>
+          <Text>Veja todas as cooperativas</Text>
+        </View>
+        <View style={styles.bottomContainer}>
+          <Text>Conheça as empresas cadastradas:</Text>
+
+          <View style={styles.containerUpperButtons}>
+            <View style={styles.upperButtons}>
+              <View style={styles.imageContainer}>{/* Imagem */}</View>
+            </View>
+            <View style={styles.upperButtons}>
+              <View style={styles.imageContainer}>{/* Imagem */}</View>
+            </View>
+            <View style={styles.upperButtons}>
+              <View style={styles.imageContainer}>{/* Imagem */}</View>
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -48,6 +60,9 @@ export default function Home({ navigation }: RootTabScreenProps<"TabOne">) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  logoContainer: {
+    alignItems: "center",
   },
   containerUpperButtons: {
     flexDirection: "row",
@@ -68,11 +83,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     alignItems: "center",
   },
+  findImageContainer: {
+    width: 300,
+    height: 300,
+  },
   findImage: {
-    width: "100%",
-    height: "50%",
-    paddingHorizontal: 1,
-    paddingVertical: 1,
-    backgroundColor: "red",
+    flex: 1,
+    width: undefined,
+    height: undefined,
+    resizeMode: "contain",
+  },
+  bottomContainer: {
+    marginBottom: 5,
   },
 });
