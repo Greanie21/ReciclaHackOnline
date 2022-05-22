@@ -104,31 +104,42 @@ function BottomTabNavigator() {
         name="TabOne"
         component={Home}
         options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
-          title: "Tab One",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate("Modal")}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
+          title: "Home",
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         })}
       />
       <BottomTab.Screen
         name="TabTwo"
         component={TabTwoScreen}
         options={{
-          title: "Tab Two",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: "Pontuação",
+          tabBarIcon: ({ color }) => <TabBarIcon name="dollar" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="TabSearch"
+        component={TabTwoScreen}
+        options={{
+          title: "Pesquisa",
+          tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="TabComment"
+        component={TabTwoScreen}
+        options={{
+          title: "Commentario",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="comment" color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="TabMenu"
+        component={TabTwoScreen}
+        options={{
+          title: "Menu",
+          tabBarIcon: ({ color }) => <TabBarIcon name="bars" color={color} />,
         }}
       />
     </BottomTab.Navigator>
