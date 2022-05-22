@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 import { Text, View } from "../components/Themed";
 import { VViewContainer } from "../components/v-view-container/v-view-container.component";
@@ -7,106 +7,60 @@ import { VViewContainer } from "../components/v-view-container/v-view-container.
 export default function SignUpScreen() {
   return (
     <VViewContainer>
-      <View style={cadastroStyles.cadastro}>
-        <Text style={cadastroStyles.JtemcadastroLogin}>
-          Já tem cadastro? Login
-        </Text>
-        <View style={cadastroStyles.Rectangle4} />
-        <View style={cadastroStyles.Rectangle5} />
-        <View style={cadastroStyles.Rectangle6} />
-        <Text style={cadastroStyles.Souumaempresa}>Sou uma empresa</Text>
-        <Text style={cadastroStyles.Souumapessoafsica}>
-          Sou uma pessoa física
-        </Text>
-        <Text style={cadastroStyles.Souumacooperativa}>
-          Sou uma cooperativa
-        </Text>
+      <View style={styles.cadastro}>
+        <View style={styles.tipoCadastro}>
+          <View style={styles.tipoBox}>
+            <TouchableOpacity style={styles.tipo} activeOpacity={0.75}>
+              <Text style={styles.tipoTitle}>Sou uma pessoa física</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.tipoBox}>
+            <TouchableOpacity style={styles.tipo} activeOpacity={0.75}>
+              <Text style={styles.tipoTitle}>Sou uma empresa</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.tipoBox}>
+            <TouchableOpacity style={styles.tipo} activeOpacity={0.75}>
+              <Text style={styles.tipoTitle}>Sou uma cooporativa</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <TouchableOpacity style={styles.cadastroButton} activeOpacity={0.5}>
+          <Text style={styles.JtemcadastroLogin}>Já tem cadastro? Login</Text>
+        </TouchableOpacity>
       </View>
     </VViewContainer>
   );
 }
 
-const cadastroStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   cadastro: {
-    width: 22.5,
-    height: 40,
-    backgroundColor: "#ffffff",
-    borderColor: "#000000",
-    borderWidth: 0.06,
+    paddingTop: 84,
+    paddingLeft: 24,
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "space-around",
   },
-  Rectangle1: {
-    width: 22.5,
-    height: 40,
-    backgroundColor: "#bfffb0",
+  tipoCadastro: {
+    height: "50%",
+    justifyContent: "space-around",
   },
+  tipoBox: {},
+  tipo: {
+    width: 300,
+    height: 45,
+    borderRadius: 10,
+    backgroundColor: "#275AE4",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  tipoTitle: {
+    fontSize: 23,
+    color: "#FDFFFC",
+  },
+  cadastroButton: {},
   JtemcadastroLogin: {
-    margin: "7.06 33.69",
-    width: 8.31,
-    height: 1.25,
-    color: "#000000",
-    fontFamily: "Source Sans 3, sans-serif",
-    fontSize: 0.88,
-    lineHeight: 1.03,
-    textAlign: "center",
-  },
-  Rectangle4: {
-    margin: "1.88 10.63",
-    width: 18.75,
-    height: 2.44,
-    backgroundColor: "#28611a",
-    borderColor: "transparent",
-    borderWidth: 0.06,
-    borderRadius: 0.69,
-  },
-  Rectangle5: {
-    margin: "1.88 15.63",
-    width: 18.75,
-    height: 2.44,
-    backgroundColor: "#28611a",
-    borderColor: "transparent",
-    borderWidth: 0.06,
-    borderRadius: 0.69,
-  },
-  Rectangle6: {
-    margin: "1.88 20.63",
-    width: 18.75,
-    height: 2.44,
-    backgroundColor: "#28611a",
-    borderColor: "transparent",
-    borderWidth: 0.06,
-    borderRadius: 0.69,
-  },
-  Souumaempresa: {
-    margin: "4.13 15.56",
-    width: 14.25,
-    height: 2.56,
-    color: "#fdfffc",
-    fontFamily: "Source Sans 3, sans-serif",
-    fontSize: 1.5,
-    lineHeight: 1.76,
-    textAlign: "center",
-    textAlignVertical: "center",
-  },
-  Souumapessoafsica: {
-    margin: "4.13 10.56",
-    width: 14.25,
-    height: 2.56,
-    color: "#fdfffc",
-    fontFamily: "Source Sans 3, sans-serif",
-    fontSize: 1.5,
-    lineHeight: 1.76,
-    textAlign: "center",
-    textAlignVertical: "center",
-  },
-  Souumacooperativa: {
-    margin: "4.13 20.56",
-    width: 14.25,
-    height: 2.56,
-    color: "#fdfffc",
-    fontFamily: "Source Sans 3, sans-serif",
-    fontSize: 1.5,
-    lineHeight: 1.76,
-    textAlign: "center",
-    textAlignVertical: "center",
+    color: "#142C6C",
   },
 });
