@@ -18,7 +18,7 @@ import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
-import TabOneScreen from "../screens/TabOneScreen";
+import Home from "../screens/HomeScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
 import { HttpService } from "../services/http.service";
 import {
@@ -30,6 +30,7 @@ import LinkingConfiguration from "./LinkingConfiguration";
 //import EventEmitter from "sm-event-emitter";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import LoginScreen from "../screens/LoginScreen";
+import SignUpScreen from "../screens/SignUpScreen";
 
 export default function Navigation({
   colorScheme,
@@ -55,7 +56,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   const dispatch = useDispatch();
 
-  const authToken = useSelector((s: any) => s?.user?.token);
+  const authToken = true; //useSelector((s: any) => s?.user?.token);
   console.log(authToken);
   console.tron.log("teste", authToken);
 
@@ -79,6 +80,7 @@ function RootNavigator() {
     );
   } else {
     return <LoginScreen />;
+    //return <SignUpScreen />;
   }
 }
 
@@ -100,7 +102,7 @@ function BottomTabNavigator() {
     >
       <BottomTab.Screen
         name="TabOne"
-        component={TabOneScreen}
+        component={Home}
         options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
           title: "Tab One",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
