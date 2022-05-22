@@ -1,9 +1,90 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, TextInput } from "react-native";
+import { Button, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 
 import { Text, View } from "../components/Themed";
 import { VViewContainer } from "../components/v-view-container/v-view-container.component";
 import { doLogin } from "../ducks/user";
+
+export default function LoginScreen() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function tryDoLogin() {
+    doLogin({ email, password });
+  }
+
+  return (
+    <VViewContainer>
+      <View style={styles.containerTitle}>
+        <Text style={styles.title}>Login</Text>
+      </View>
+      <View style={styles.contentContainer}>
+        <View style={styles.containerData}>
+          <TextInput
+            style={styles.emailInput}
+            placeholder={"Email"}
+            onChangeText={(text) => setEmail(text)}
+            value={email}
+          />
+          <TextInput
+            style={styles.emailInput}
+            placeholder={"Senha"}
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+          />
+          <View style={styles.forgottenPasswordContainer}>
+            <TouchableOpacity
+              style={styles.forgottenPassword}
+              activeOpacity={0.5}
+            >
+              <Text style={styles.forgottenPasswordText}>
+                Esqueci minha senha
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.loginBox}>
+            <TouchableOpacity
+              style={styles.loginButton}
+              activeOpacity={0.75}
+              onPress={() => tryDoLogin}
+            >
+              <Text style={styles.loginText}>Login</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.orContainer}>
+          <View style={styles.line1}></View>
+          <View style={styles.orTextContainer}>
+            <Text style={styles.orText}>ou</Text>
+          </View>
+          <View style={styles.line2}></View>
+        </View>
+        <View style={styles.containerSocial}>
+          <View style={styles.socialBox}>
+            <TouchableOpacity style={styles.socialButton} activeOpacity={0.75}>
+              <Text style={styles.socialText}>Facebook</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.socialBox}>
+            <TouchableOpacity style={styles.socialButton} activeOpacity={0.75}>
+              <Text style={styles.socialText}>Google</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.containerCreateAccount}>
+          <TouchableOpacity
+            style={styles.createAccountButton}
+            activeOpacity={0.5}
+          >
+            <Text style={styles.createAccountText}>
+              Não tem login? Crie uma conta
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </VViewContainer>
+  );
+}
 
 const styles = StyleSheet.create({
   containerTitle: {
@@ -15,46 +96,51 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     fontSize: 36,
     lineHeight: 51,
-    color: "#28611A",
+    color: "#142C6C",
+  },
+  contentContainer: {
+    marginTop: 100,
+    height: 500,
+    justifyContent: "space-around",
   },
   containerData: {
-    paddingTop: 210,
     paddingLeft: 30,
   },
   emailInput: {
     height: 40,
+    width: 300,
     margin: 12,
     borderBottomWidth: 1,
     padding: 10,
   },
   forgottenPasswordContainer: {
-    marginLeft: 210,
+    marginLeft: 175,
   },
-  forgottenPassword: {
+  forgottenPassword: {},
+  forgottenPasswordText: {
     fontFamily: "Source Sans 3",
     fontStyle: "normal",
     fontSize: 13,
     lineHeight: 19,
-    color: "#000000",
+    color: "#142C6C",
   },
   loginBox: {
+    marginTop: 25,
+    marginLeft: 20,
+  },
+  loginButton: {
+    backgroundColor: "#142C6C",
     borderRadius: 11,
     width: 300,
     height: 39,
-    marginTop: 25,
-    marginLeft: 20,
-    backgroundColor: "#28611A",
+    alignItems: "center",
+    justifyContent: "center",
   },
   loginText: {
-    margin: "6.19 7.75",
-    width: 6.44,
-    height: 2.56,
-    color: "#fdfffc",
-    fontFamily: "Source Sans 3, sans-serif",
-    fontSize: 1.5,
-    lineHeight: 1.76,
-    textAlign: "center",
-    textAlignVertical: "center",
+    fontFamily: "Source Sans 3",
+    fontStyle: "normal",
+    color: "#FDFFFC",
+    fontSize: 24,
   },
   orContainer: {
     flexDirection: "row",
@@ -91,74 +177,29 @@ const styles = StyleSheet.create({
   containerSocial: {
     flexDirection: "row",
   },
-  socialButton: {
-    borderRadius: 11,
-    width: 146,
+  socialBox: {
     marginTop: 25,
     marginHorizontal: 30,
-    backgroundColor: "#28611A",
+  },
+  socialButton: {
+    backgroundColor: "#275AE4",
+    borderRadius: 11,
+    width: 146,
+    height: 35,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  socialText: {
+    color: "#FDFFFC",
+    fontSize: 16,
   },
   containerCreateAccount: {
     marginTop: 50,
     alignItems: "center",
   },
+  createAccountButton: {},
+  createAccountText: {
+    color: "#142C6C",
+    fontSize: 14,
+  },
 });
-
-export default function LoginScreen() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  function tryDoLogin() {
-    doLogin({ email, password });
-  }
-
-  return (
-    <VViewContainer>
-      <View style={styles.containerTitle}>
-        <Text style={styles.title}>Login</Text>
-      </View>
-      <View style={styles.containerData}>
-        <TextInput
-          style={styles.emailInput}
-          placeholder={"Email"}
-          onChangeText={(text) => setEmail(text)}
-          value={email}
-        />
-        <TextInput
-          style={styles.emailInput}
-          placeholder={"Senha"}
-          onChangeText={(text) => setPassword(text)}
-          value={password}
-        />
-        <View style={styles.forgottenPasswordContainer}>
-          <Text>Esqueci minha senha</Text>
-        </View>
-        <View style={styles.loginBox}>
-          <Button
-            title="Login"
-            color={"white"}
-            onPress={() => tryDoLogin}
-          ></Button>
-        </View>
-      </View>
-      <View style={styles.orContainer}>
-        <View style={styles.line1}></View>
-        <View style={styles.orTextContainer}>
-          <Text style={styles.orText}>ou</Text>
-        </View>
-        <View style={styles.line2}></View>
-      </View>
-      <View style={styles.containerSocial}>
-        <View style={styles.socialButton}>
-          <Button title="Facebook" color={"white"}></Button>
-        </View>
-        <View style={styles.socialButton}>
-          <Button title="Google" color={"white"}></Button>
-        </View>
-      </View>
-      <View style={styles.containerCreateAccount}>
-        <Button title="Não tem login? Crie uma conta" color={"black"}></Button>
-      </View>
-    </VViewContainer>
-  );
-}
