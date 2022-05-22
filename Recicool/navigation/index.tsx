@@ -97,6 +97,7 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
+  const isOnDescartePage = useSelector((s: any) => s?.user?.isOnDescartePage);
 
   return (
     <BottomTab.Navigator
@@ -139,14 +140,25 @@ function BottomTabNavigator() {
           ),
         }}
       />
-      <BottomTab.Screen
-        name="TabMenu"
-        component={MenuScreen}
-        options={{
-          title: "Menu",
-          tabBarIcon: ({ color }) => <TabBarIcon name="bars" color={color} />,
-        }}
-      />
+      {isOnDescartePage ? (
+        <BottomTab.Screen
+          name="TabMenu"
+          component={MenuScreen}
+          options={{
+            title: "Menu",
+            tabBarIcon: ({ color }) => <TabBarIcon name="bars" color={color} />,
+          }}
+        />
+      ) : (
+        <BottomTab.Screen
+          name="DescarteScreen"
+          component={DescarteScreen}
+          options={{
+            title: "Menu",
+            tabBarIcon: ({ color }) => <TabBarIcon name="bars" color={color} />,
+          }}
+        />
+      )}
     </BottomTab.Navigator>
   );
 }

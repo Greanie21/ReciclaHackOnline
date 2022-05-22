@@ -14,10 +14,12 @@ export const REGISTER = "user/REGISTER";
 export const REGISTER_COMPLETE = "user/REGISTER_COMPLETE";
 export const IS_ON_LOGIN_PAGE = "user/IS_ON_LOGIN_PAGE";
 export const IS_NOT_ON_LOGIN_PAGE = "user/IS_NOT_ON_LOGIN_PAGE";
+export const IS_ON_DESCARTE_PAGE = "user/IS_ON_DESCARTE_PAGE";
 // Reducer
 const initialState = {
   token: "",
   isOnLoginPage: true,
+  isOnDescartePage: false,
   current: {},
   isLoading: false,
 };
@@ -65,6 +67,9 @@ export default function reducer(state = initialState, action = {}) {
     case IS_NOT_ON_LOGIN_PAGE: {
       return { ...state, isOnLoginPage: false };
     }
+    case IS_ON_DESCARTE_PAGE: {
+      return { ...state, isOnDescartePage: action.payload.response };
+    }
     default:
       return state;
   }
@@ -103,4 +108,7 @@ export function isOnLoginPage() {
 }
 export function isNotOnLoginPage() {
   return { type: IS_NOT_ON_LOGIN_PAGE };
+}
+export function isOnDescartePage(response) {
+  return { type: IS_ON_DESCARTE_PAGE, payload: { response } };
 }
