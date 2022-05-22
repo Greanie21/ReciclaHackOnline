@@ -10,59 +10,13 @@ export const GET_USER = "user/GET_USER";
 export const GET_USER_SUCCESS = "user/GET_USER_SUCCESS";
 export const GET_USER_FAILED = "user/GET_USER_FAILED";
 export const DO_LOGOUT = "user/DO_LOGOUT";
-export const GET_NOTIFICATIONS = "user/GET_NOTIFICATIONS";
-export const GET_NOTIFICATIONS_SUCCESS = "user/GET_NOTIFICATIONS_SUCCESS";
-export const GET_LEADS = "user/GET_LEADS";
-export const GET_LEADS_SUCCESS = "user/GET_LEADS_SUCCESS";
 export const REGISTER = "user/REGISTER";
 export const REGISTER_COMPLETE = "user/REGISTER_COMPLETE";
-export const UPDATE_USER_INFORMATION = "user/UPDATE_USER_INFORMATION";
-export const CHANGE_PASSWORD = "user/CHANGE_PASSWORD";
-export const DO_ADIANTAMENTO = "user/DO_ADIANTAMENTO";
-export const SET_NOTIFICATION_TOKEN = "user/SET_NOTIFICATION_TOKEN";
-export const CLEAN_LEADS = "user/CLEAN_LEADS";
-export const QRCODE = "user/QRCODE";
-export const FILE_UPLOAD = "user/FILE_UPLOAD";
-export const FILE_UPLOAD_SUCCESS = "user/FILE_UPLOAD_SUCCESS";
-export const GET_FILE_FOR_UPLOAD = "user/GET_FILE_FOR_UPLOAD";
-export const GET_FILE_FOR_UPLOAD_SUCCESS = "user/GET_FILE_FOR_UPLOAD_SUCCESS";
-export const GET_FILE_FOR_UPLOAD_FAILED = "user/GET_FILE_FOR_UPLOAD_FAILED";
-export const DO_CODE_FOR_EXTRACT = "lead/DO_CODE_FOR_EXTRACT";
-export const FETCH_MY_VISITS = "user/FETCH_MY_VISITS";
-export const FETCH_MY_VISITS_SUCCESS = "user/FETCH_MY_VISITS_SUCCESS";
-export const FETCH_MY_VISITS_FAILED = "user/FETCH_MY_VISITS_FAILED";
-export const FLIGHT_PLAN_UPDATE = "user/FLIGHT_PLAN_UPDATE";
-export const FLIGHT_PLAN_UPDATE_SUCCESS = "user/FLIGHT_PLAN_UPDATE_SUCCESS";
-export const GET_SUBORDINATED_USERS = "user/GET_SUBORDINATED_USERS";
-export const GET_SUBORDINATED_USERS_SUCCESS =
-  "user/GET_SUBORDINATED_USERS_SUCCESS";
-export const GET_SUBORDINATED_USERS_FAILED =
-  "user/GET_SUBORDINATED_USERS_FAILED";
-export const GET_PARTNER_DETAILS = "user/GET_PARTNER_DETAILS";
-export const GET_PARTNER_DETAILS_SUCCESS = "user/GET_PARTNER_DETAILS_SUCCESS";
-export const GET_PARTNER_DETAILS_FAILED = "user/GET_PARTNER_DETAILS_FAILED";
-
 // Reducer
 const initialState = {
   token: "auie",
-  notifications: [],
-  leads: [],
   current: {},
-  email: "",
-  password: "",
-  deviceId: "",
   isLoading: false,
-  files: [],
-  loadingUpload: false,
-  loadingFlightPlan: false,
-  myVisits: {},
-  isLoadingFetchVisits: false,
-  isLoadingLogin: false,
-  subordinatedUsers: [],
-  isLoadingGetUser: false,
-  isLoadingRegister: false,
-  partnerResume: {},
-  partnerDetails: {},
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -88,9 +42,6 @@ export default function reducer(state = initialState, action = {}) {
         isLoadingLogin: false,
       };
     }
-    case GET_NOTIFICATIONS_SUCCESS: {
-      return { ...state, notifications: action.payload.notifications };
-    }
     case GET_USER: {
       return { ...state, isLoadingGetUser: true };
     }
@@ -103,110 +54,6 @@ export default function reducer(state = initialState, action = {}) {
     }
     case GET_USER_FAILED: {
       return { ...state, isLoadingGetUser: false };
-    }
-    case GET_LEADS_SUCCESS: {
-      return { ...state, leads: action.payload.leads };
-    }
-    case DO_LOGOUT: {
-      return { ...state, token: "" };
-    }
-    case REGISTER: {
-      return { ...state, isLoadingRegister: true };
-    }
-    case REGISTER_COMPLETE: {
-      return { ...state, isLoadingRegister: false };
-    }
-    case FILE_UPLOAD: {
-      return {
-        ...state,
-        loadingUpload: true,
-      };
-    }
-    case FILE_UPLOAD_SUCCESS: {
-      return {
-        ...state,
-        loadingUpload: false,
-      };
-    }
-    case GET_FILE_FOR_UPLOAD: {
-      return {
-        ...state,
-        isLoading: true,
-      };
-    }
-    case GET_FILE_FOR_UPLOAD_SUCCESS: {
-      return {
-        ...state,
-        isLoading: false,
-        files: action.payload.files,
-      };
-    }
-    case GET_FILE_FOR_UPLOAD_FAILED: {
-      return {
-        ...state,
-        isLoading: false,
-      };
-    }
-    case FETCH_MY_VISITS: {
-      return {
-        ...state,
-        isLoadingFetchVisits: true,
-      };
-    }
-    case FETCH_MY_VISITS_SUCCESS: {
-      return {
-        ...state,
-        isLoadingFetchVisits: false,
-        myVisits: action.payload.myVisits,
-      };
-    }
-    case FETCH_MY_VISITS_FAILED: {
-      return {
-        ...state,
-        isLoadingFetchVisits: false,
-      };
-    }
-    case FLIGHT_PLAN_UPDATE: {
-      return { ...state, loadingFlightPlan: true };
-    }
-    case FLIGHT_PLAN_UPDATE_SUCCESS: {
-      return {
-        ...state,
-        loadingFlightPlan: false,
-        current: action.payload.user,
-      };
-    }
-    case GET_SUBORDINATED_USERS: {
-      return { ...state, isLoading: true };
-    }
-    case GET_SUBORDINATED_USERS_SUCCESS: {
-      return {
-        ...state,
-        isLoading: false,
-        subordinatedUsers: action.payload.data,
-      };
-    }
-    case GET_SUBORDINATED_USERS_FAILED: {
-      return { ...state, isLoading: true };
-    }
-    case GET_PARTNER_DETAILS: {
-      return { ...state, isLoading: true };
-    }
-    case GET_PARTNER_DETAILS_SUCCESS: {
-      return {
-        ...state,
-        isLoading: false,
-        partnerResume: action.payload.data.resumo,
-        partnerDetails: action.payload.data.detalhes,
-      };
-    }
-    case GET_PARTNER_DETAILS_FAILED: {
-      return {
-        ...state,
-        isLoading: false,
-        partnerResume: {},
-        partnerDetails: {},
-      };
     }
     default:
       return state;

@@ -57,11 +57,10 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   const dispatch = useDispatch();
 
-  const authToken = useSelector((s: any) => s?.user?.token);
-  //console.log(authToken);
-  console.tron.log("teste", authToken);
+  const authToken = true; //useSelector((s: any) => s?.user?.token);
+
   console.tron.log(
-    "teste2",
+    "teste",
     useSelector((s: any) => s?.user)
   );
 

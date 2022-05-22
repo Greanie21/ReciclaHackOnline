@@ -1,33 +1,127 @@
-import React from "react";
-import { ScrollView } from "react-native";
+import React, { useState } from "react";
+import { ScrollView, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
 import { List } from "react-native-paper";
-
-import { View } from "../components/Themed";
+import { Text, View } from "../components/Themed";
 
 export default function MenuScreen() {
+  const [open, setOpen] = useState(false);
+  const [openT2, setOpenT2] = useState("");
+  const [openT3, setOpenT3] = useState("");
+
+  function goToPage(page: string) {}
+
+  function renderT3(name: string) {
+    return (
+      <TouchableOpacity onPress={() => setOpenT3(name)}>
+        <View style={styles.accordionContainerT3}>
+          <View style={styles.containerTextT3}>
+            <Text style={styles.fontT3}>{name}</Text>
+          </View>
+        </View>
+        {openT3 === name ? <View>{preRenderT4(name)}</View> : null}
+      </TouchableOpacity>
+    );
+  }
+
+  function preRenderT4(name: string) {
+    switch (name) {
+      case "Plástico":
+        return (
+          <>
+            {renderT4("PET (garrafas e embalagens)")}
+            {renderT4("PEAD (tampas e embalagens)")}
+            {renderT4("PVC (potes e embalagens)")}
+            {renderT4("PEBD (sacolas e embalagens)")}
+            {renderT4("PP (frascos e embalagens)")}
+            {renderT4("PS (potes e frascos)")}
+          </>
+        );
+      case "Papel e Papelão":
+        return (
+          <>
+            {renderT4("Cadernos usados")}
+            {renderT4("Caixa de pizza")}
+          </>
+        );
+      case "Cartonados":
+        return (
+          <>
+            {renderT4("Cadernos usados")}
+            {renderT4("Caixa de pizza")}
+          </>
+        );
+      default:
+        return null;
+    }
+  }
+
+  function renderT4(name: string) {
+    return (
+      <TouchableOpacity onPress={() => goToPage(name)}>
+        <View style={styles.accordionContainerT4}>
+          <View style={styles.containerTextT4}>
+            <Text style={styles.fontT4}>{name}</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView>
-        {/* <List.Section title="Accordions">
-          <List.Accordion
-            title="Uncontrolled Accordion"
-            left={(props) => <List.Icon {...props} icon="folder" />}
-          >
-            <List.Item title="First item" />
-            <List.Item title="Second item" />
-          </List.Accordion>
-
-          <List.Accordion
-            title="Controlled Accordion"
-            left={(props) => <List.Icon {...props} icon="folder" />}
-            expanded={expanded}
-            onPress={handlePress}
-          >
-            <List.Item title="First item" />
-            <List.Item title="Second item" />
-          </List.Accordion>
-        </List.Section> */}
+        <View>
+          <View style={styles.containerTextT1}>
+            <Text style={styles.fontT1}>Sobre</Text>
+          </View>
+          <TouchableOpacity onPress={() => setOpen(!open)}>
+            <View>
+              <View style={styles.accordionContainerT1}>
+                <View style={styles.containerTextT1}>
+                  <Text style={styles.fontT1}>Descarte</Text>
+                </View>
+              </View>
+              {open ? (
+                <View>
+                  <TouchableOpacity onPress={() => setOpenT2("Recicláveis")}>
+                    <View style={styles.accordionContainerT2}>
+                      <View style={styles.containerTextT2}>
+                        <Text style={styles.fontT2}>Recicláveis</Text>
+                      </View>
+                    </View>
+                    {openT2 === "Recicláveis" ? (
+                      <View>
+                        {renderT3("Plástico")}
+                        {renderT3("Papel e Papelão")}
+                        {renderT3("Cartonados")}
+                        {renderT3("Vidro")}
+                        {renderT3("Metal")}
+                        {renderT3("Outros")}
+                      </View>
+                    ) : null}
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => setOpenT2("Não Recicláveis")}
+                  >
+                    <View style={styles.accordionContainerT2}>
+                      <View style={styles.containerTextT2}>
+                        <Text style={styles.fontT2}>Não Recicláveis</Text>
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => setOpenT2("Orgânicos")}>
+                    <View style={styles.accordionContainerT2}>
+                      <View style={styles.containerTextT2}>
+                        <Text style={styles.fontT2}>Orgânicos</Text>
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                </View>
+              ) : null}
+            </View>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </View>
   );
@@ -37,39 +131,46 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  logoContainer: {
-    alignItems: "center",
+  accordionContainerT1: {
+    //backgroundColor: "red",
   },
-  containerUpperButtons: {
-    flexDirection: "row",
+  containerTextT1: {
+    borderWidth: 3,
   },
-  upperButtons: {
-    flex: 1,
-    backgroundColor: "#C1FFD7",
-    margin: 20,
-    borderRadius: 15,
-    paddingVertical: 20,
-    alignItems: "center",
+  fontT1: {
+    fontSize: 30,
+    alignSelf: "center",
   },
-  imageContainer: {
-    backgroundColor: "red",
-    padding: 10,
+  accordionContainerT2: {
+    //backgroundColor: "blue",
+    marginLeft: 10,
   },
-  findContainer: {
-    paddingHorizontal: 20,
-    alignItems: "center",
+  containerTextT2: {
+    borderWidth: 2,
   },
-  findImageContainer: {
-    width: 300,
-    height: 300,
+  fontT2: {
+    fontSize: 25,
+    alignSelf: "center",
   },
-  findImage: {
-    flex: 1,
-    width: undefined,
-    height: undefined,
-    resizeMode: "contain",
+  accordionContainerT3: {
+    //backgroundColor: "green",
+    marginLeft: 20,
   },
-  bottomContainer: {
-    marginBottom: 5,
+  containerTextT3: {
+    borderWidth: 1,
+  },
+  fontT3: {
+    fontSize: 20,
+    alignSelf: "center",
+  },
+  accordionContainerT4: {
+    marginLeft: 30,
+  },
+  containerTextT4: {
+    borderWidth: 1,
+  },
+  fontT4: {
+    fontSize: 15,
+    alignSelf: "center",
   },
 });
