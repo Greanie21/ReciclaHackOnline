@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Recicool",
-    "slug": "Recicool",
+    "name": "Re.Ciclo",
+    "slug": "reciclo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -29,6 +29,8 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/Greanie21/ReciclaHackOnline"
   }
 }
