@@ -1,6 +1,5 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
-import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
 
 export default function PointsScreen() {
@@ -47,6 +46,9 @@ export default function PointsScreen() {
           </View>
         </View>
       </View>
+      <TouchableOpacity style={styles.trocaPontosPremios}>
+        <Text>Clique aqui e troque seus pontos por prémios</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -111,5 +113,9 @@ const styles = StyleSheet.create({
   },
   textoMoeda: {
     fontSize: 20,
+  },
+  trocaPontosPremios: {
+    marginTop: 25,
+    alignItems: "center",
   },
 });
