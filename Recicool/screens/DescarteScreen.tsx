@@ -1,9 +1,12 @@
 import React from "react";
-import { ScrollView, TextInput } from "react-native";
+import { ScrollView, TextInput, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
+import { useDispatch } from "react-redux";
 import { Text, View } from "../components/Themed";
+import { isOnDescartePage } from "../ducks/user";
 
 export default function DescarteScreen() {
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -37,6 +40,9 @@ export default function DescarteScreen() {
             multiline={true}
           ></TextInput>
         </View>
+        <TouchableOpacity onPress={() => dispatch(isOnDescartePage(false))}>
+          <Text>Voltar</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -45,7 +51,7 @@ export default function DescarteScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 84,
+    //paddingTop: 84,
   },
   titleConteiner: {
     backgroundColor: "#142C6C",

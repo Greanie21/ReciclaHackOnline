@@ -99,7 +99,7 @@ export default function MenuScreen() {
     <View style={styles.container}>
       <ScrollView>
         <View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => goToPage("")}>
             <View style={styles.containerTextT1}>
               <Text style={styles.fontT1}>Sobre</Text>
             </View>
@@ -130,16 +130,14 @@ export default function MenuScreen() {
                       </View>
                     ) : null}
                   </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => setOpenT2("Não Recicláveis")}
-                  >
+                  <TouchableOpacity onPress={() => goToPage("")}>
                     <View style={styles.accordionContainerT2}>
                       <View style={styles.containerTextT2}>
                         <Text style={styles.fontT2}>Não Recicláveis</Text>
                       </View>
                     </View>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => setOpenT2("Orgânicos")}>
+                  <TouchableOpacity onPress={() => goToPage("")}>
                     <View style={styles.accordionContainerT2}>
                       <View style={styles.containerTextT2}>
                         <Text style={styles.fontT2}>Orgânicos</Text>
@@ -150,12 +148,12 @@ export default function MenuScreen() {
               ) : null}
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => goToPage("")}>
             <View style={styles.containerTextT1}>
               <Text style={styles.fontT1}>Cooperativas</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => goToPage("")}>
             <View style={styles.containerTextT1}>
               <Text style={styles.fontT1}>Empresas</Text>
             </View>
